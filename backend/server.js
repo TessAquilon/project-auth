@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 });
 
 ///////////////
-// Create user schema
+// Create user 
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -42,7 +42,6 @@ const userSchema = new mongoose.Schema({
   }
 })
 
-// Create user model
 const User = mongoose.model("User", userSchema)
 
 // Naming conventions: Sign in/sign up OR register/log in
@@ -102,6 +101,70 @@ app.post("/login", async (req, res) => {
       response: e
     })
   }
+})
+///////////////
+// Thoughts
+
+const  ThoughtSchema = new mongoose.Schema({
+  message: {
+    type: String
+  },
+  createdAt: {
+    type: Date,
+    default: () => new Date()
+  },
+  hearts: {
+    type: Number,
+    default: 0
+  },
+  user: {
+    type: String,
+    required: true
+  }
+});
+
+const Thought = mongoose.model("Thought", ThoughtSchema);
+
+// Authenticate the user
+const authenticateUser = async (req, res, next) => {
+  const accessToken = req.header("Authorization");
+  try {
+    const user = await User.findOne({accessToken})
+    if (user) {
+      next();
+    } else {
+      res.status(401).json({
+        success:false,
+        respone: "Please log in"
+      })
+    }
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      response: e
+    })
+  }
+}
+
+app.get("/thoughts", authenticateUser);
+app.get("/thoughts", async (req, res) => {
+  const thoughts = await Thought.find({});
+  // try catch, if else
+  res.status(200).json({
+    success: true, 
+    response: thoughts})
+})
+
+app.post("/thoughts", authenticateUser);
+app.post("/thoughts", async (req, res) => {
+  const { message } = req.body;
+  const accessToken = req.header("Authorization");
+  const user = await User.findOne({accessToken})
+  const thoughts = await new Thought({message: message, user: user._id}).save()
+  // try catch, if else
+  res.status(200).json({
+    success: true, 
+    response: thoughts})
 })
 
 
