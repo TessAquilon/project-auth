@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { API_URL } from "utils/urls";
 
 const Login = () => {
     const [username, setUsername] = useState("");
@@ -16,6 +17,13 @@ const Login = () => {
             },
             body: JSON.stringify({username: username, password: password})
         }
+        fetch (API_URL(mode), options)
+        .then(res => res.json())
+        .then (data => {
+            if(data.success) {
+                
+            }
+        })
     }
     return(
         <form onSubmit={onFormSubmit}>
