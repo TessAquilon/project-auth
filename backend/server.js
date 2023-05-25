@@ -21,6 +21,27 @@ app.get("/", (req, res) => {
   res.send("Hello Technigo!");
 });
 
+///////////////
+// Create userSchema
+const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  accessToken: {
+    type: String,
+    default: () => crypto.randomBytes(128).toString("hex")
+  }
+})
+
+
+
+///////////////
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
