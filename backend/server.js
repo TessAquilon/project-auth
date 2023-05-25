@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import crypto from "crypto";
 import bcrypt from "bcrypt";
 
-const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/project-mongo";
+const mongoUrl = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/project-mongo"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
 
@@ -47,7 +47,7 @@ const User = mongoose.model("User", userSchema)
 
 // Naming conventions: Sign in/sign up OR register/log in
 
-// Create register endpoint
+// Create registration 
 app.post("/register", async (req, res) => {
   // npm i bcrypt
   const { username, password } = req.body;
@@ -75,7 +75,34 @@ app.post("/register", async (req, res) => {
   }
 });
 
-
+// Create login
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    // const user = await User.findOne({ username: username })
+    const user = await User.findOne({ username })
+    if (user && bcrypt.compareSync(password, user.password)) {
+      res.status(201).json({
+        success: true,
+        response: {
+          username: user.username,
+          id: user._id,
+          accessToken: user.accessToken
+        }
+      })
+    } else {
+      res.status(400).json({
+        success: false,
+        response: "Credentials do not match"
+      })
+    }
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      response: e
+    })
+  }
+})
 
 
 ///////////////
