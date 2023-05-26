@@ -148,7 +148,9 @@ const authenticateUser = async (req, res, next) => {
 
 app.get("/thoughts", authenticateUser);
 app.get("/thoughts", async (req, res) => {
-  const thoughts = await Thought.find({});
+  const accessToken = req.header("Authorization");
+  const user = await User.findOne({accessToken})
+  const thoughts = await Thought.find({user: user._id});
   // try catch, if else
   res.status(200).json({
     success: true, 
