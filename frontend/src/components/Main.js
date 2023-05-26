@@ -43,6 +43,7 @@ const Main = () => {
         dispatch(user.actions.setUsername(null))
         dispatch(user.actions.setUserId(null))
         dispatch(user.actions.setError(null))
+        dispatch(thoughts.actions.setItems([]))
     }
     return(
         <>
