@@ -5,6 +5,9 @@ import { API_URL } from "utils/urls";
 import { useNavigate } from "react-router-dom";
 import user from "reducers/user";
 import thoughts from "reducers/thoughts";
+import './GlobalStyles';
+import './Main.css';
+import { InnerWrapper, OuterWrapper } from "./GlobalStyles";
 
 const Main = () => {
     const thoughtItems = useSelector((store) => store.thoughts.items);
@@ -47,13 +50,17 @@ const Main = () => {
         dispatch(thoughts.actions.setItems([]))
     }
     return(
-        <>
-            <button type="button" onClick={onLogoutButtonClick}>Logout</button>
-            {username ? (<h2>These are the thoughts of {username.toUpperCase()}</h2>):""}
-            {thoughtItems.map(item => {
-                return(<p key={item._id}>{item.message}</p>)
-            })}
-        </>
+        <OuterWrapper>
+            <InnerWrapper>
+                <section className="main-wrapper">
+                    <button type="button" onClick={onLogoutButtonClick}>Logout</button>
+                    {username ? (<h2>These are the thoughts of {username.toUpperCase()}</h2>):""}
+                    {thoughtItems.map(item => {
+                        return(<p key={item._id}>{item.message}</p>)
+                    })}
+                </section>
+            </InnerWrapper>
+        </OuterWrapper>
     );
 }
 

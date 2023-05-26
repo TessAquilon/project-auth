@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'Alagard';
+  src: 
+       url('./assets/alagard/alagard.ttf')  format('truetype') /* Safari, Android, iOS */
+}
+
+:root {
+  --color-yellow: #fff200;
+  --font-primary: 'Alagard';
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -5,9 +16,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+label, p, h2 {
+  color: var(--color-yellow);
+  font-family: var(--font-primary);
 }
