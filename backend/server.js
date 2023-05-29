@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import crypto from "crypto";
 import bcrypt from "bcrypt";
 
-const mongoUrl = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/project-mongo"
+const mongoUrl = process.env.MONGO_URL || "https://project-auth-g3v5cnelcq-lz.a.run.app"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
 
@@ -135,7 +135,7 @@ const authenticateUser = async (req, res, next) => {
     } else {
       res.status(401).json({
         success:false,
-        respone: "Please log in"
+        response: "Please log in"
       })
     }
   } catch (e) {
