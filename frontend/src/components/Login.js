@@ -72,7 +72,7 @@ const Login = () => {
                             onChange={() => setMode("login")}/>
                         </section>
                     </section>
-                    <form onSubmit={onFormSubmit} autocomplete="off" >
+                    <form onSubmit={onFormSubmit} autoComplete="off" >
                         <section className="label-input-wrapper">
                             <label htmlFor="username">&lt;username&gt;</label>
                             <input 
