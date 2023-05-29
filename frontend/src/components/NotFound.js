@@ -1,14 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { InnerWrapper, OuterWrapper } from "./GlobalStyles";
+import './NotFound.css';
 
 const NotFound = () => {
 
     return(
-        <>
-            <p>Sorry, nothing here :/</p>
-            <Link to="/login">Go to Login</Link>
-            <Link to="/">Go to Main</Link>
-        </>
+        <OuterWrapper>
+            <InnerWrapper>
+                <section className="not-found-section">
+                    <p>Sorry, nothing here :/</p>
+                    <section className="link-section">
+                        <p>
+                        <Link to="/">Back to start</Link>
+                        </p>
+                    </section>
+                </section>
+            </InnerWrapper>
+        </OuterWrapper>
     );
 }
 

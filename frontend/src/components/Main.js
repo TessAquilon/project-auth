@@ -52,7 +52,7 @@ const Main = () => {
     return(
         <OuterWrapper>
             <InnerWrapper>
-                <section className="main-wrapper">
+                <section className="main-section">
                     <button type="button" onClick={onLogoutButtonClick}>Logout</button>
                     {username ? (<h2>Hi, &lt;{username}&gt;</h2>):""}
                     {thoughtItems.map(item => {

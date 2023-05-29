@@ -52,7 +52,7 @@ const Login = () => {
     return(
         <OuterWrapper>
             <InnerWrapper>
-                <section className="login-wrapper">
+                <section className="login-section">
                     <h1>&lt;project&#45;authentication&gt;</h1>
                     <section className="radio-buttons-wrapper">
                         <section className="label-input-wrapper">
