@@ -1,3 +1,61 @@
 .login-wrapper {
    margin-top: 10vh;
+   display: flex;
+   flex-direction: column;
 }
+
+input[type=text], input[type=password] {
+   border: none;
+   border-bottom: 2px solid var(--color-yellow);
+   background-color: black !important;
+   color: var(--color-yellow) !important;
+   font-family: var(--font-primary) !important;
+ }
+
+ input[type=text]:focus {
+   background-color: black !important;
+   color: var(--color-yellow) !important;
+   font-family: var(--font-primary) !important;
+ }
+
+ input[type=button] {
+   cursor: pointer;
+ }
+
+ button {
+   background-color: var(--color-yellow);
+   padding: 5px;
+   font-family: var(--font-primary);
+   margin-top: 10px;
+ }
+
+.label-input-wrapper {
+   display: flex;
+   gap: 5px;
+   justify-content: space-between;
+   margin-bottom: 10px;
+   align-items: center;
+}
+
+.radio-buttons-wrapper {
+   display: flex;
+   gap: 15px;
+}
+
+@media screen and (min-width: 668px) {
+   p {
+     font-size: 22px;
+   }
+   h2 {
+     font-size: 26px;
+   }
+   label, button {
+     font-size: 26px;
+   }
+   h1 {
+      font-size: 32px;
+   }
+   input[type="text"], input[type=password] {
+      font-size: 26px;
+   }
+ }

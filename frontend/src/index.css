@@ -24,7 +24,7 @@ code {
     monospace;
 }
 
-label, p, h2 {
+label, p, h2, h1 {
   color: var(--color-yellow);
   font-family: var(--font-primary);
 }

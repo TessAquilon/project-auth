@@ -54,7 +54,7 @@ const Main = () => {
             <InnerWrapper>
                 <section className="main-wrapper">
                     <button type="button" onClick={onLogoutButtonClick}>Logout</button>
-                    {username ? (<h2>These are the thoughts of {username.toUpperCase()}</h2>):""}
+                    {username ? (<h2>Hi, &lt;{username}&gt;</h2>):""}
                     {thoughtItems.map(item => {
                         return(<p key={item._id}>{item.message}</p>)
                     })}

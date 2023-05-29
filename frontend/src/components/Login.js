@@ -14,6 +14,10 @@ const Login = () => {
     const dispatch = useDispatch();
     const accessToken = useSelector(store => store.user.accessToken);
     const navigate = useNavigate();
+    const error = useSelector(store => store.user.error);
+    const onInputChange = () => {
+            dispatch(user.actions.setError(null))
+    };
     useEffect(() => {
         if(accessToken) {
             navigate("/")
@@ -49,32 +53,48 @@ const Login = () => {
         <OuterWrapper>
             <InnerWrapper>
                 <section className="login-wrapper">
-                    <label htmlFor="register">Register</label>
-                    <input
-                    type="radio"
-                    id="register"
-                    checked={mode === "register"} 
-                    onChange={() => setMode("register")}/>
-                    <label htmlFor="login">Login</label>
-                    <input
-                    type="radio"
-                    id="login" 
-                    checked={mode === "login"} 
-                    onChange={() => setMode("login")}/>
-                    <form onSubmit={onFormSubmit}>
-                        <label htmlFor="username">Username</label>
-                        <input 
-                            type="text" 
-                            id="username" 
-                            value={username}
-                            onChange={e => setUsername(e.target.value)} />
-                        <label htmlFor="password">Password</label>
-                        <input 
-                            type="password" 
-                            id="password"
-                            value={password}
-                            onChange={e => setPassword(e.target.value)} />
-                        <button type="submit">Submit</button>
+                    <h1>&lt;project&#45;authentication&gt;</h1>
+                    <section className="radio-buttons-wrapper">
+                        <section className="label-input-wrapper">
+                            <label htmlFor="register">&lt;register&gt;</label>
+                            <input
+                            type="radio"
+                            id="register"
+                            checked={mode === "register"} 
+                            onChange={() => setMode("register")}/>
+                        </section>
+                        <section className="label-input-wrapper">
+                            <label htmlFor="login">&lt;log-in&gt;</label>
+                            <input
+                            type="radio"
+                            id="login" 
+                            checked={mode === "login"} 
+                            onChange={() => setMode("login")}/>
+                        </section>
+                    </section>
+                    <form onSubmit={onFormSubmit} autocomplete="off" >
+                        <section className="label-input-wrapper">
+                            <label htmlFor="username">&lt;username&gt;</label>
+                            <input 
+                                type="text" 
+                                id="username" 
+                                value={username}
+                                onChange={e => {setUsername(e.target.value);
+                                onInputChange()}} />
+                        </section>
+                        <section className="label-input-wrapper">
+                            <label htmlFor="password">&lt;password&gt;</label>
+                            <input 
+                                type="password" 
+                                id="password"
+                                value={password}
+                                onChange={e => {
+                                    setPassword(e.target.value);
+                                    onInputChange()}} />
+                        </section>
+                        {error !== null && mode==="register" && <p>Sorry, username already exists.</p> }
+                        {error !== null && mode==="login" && <p>Sorry, credentials do not match.</p> }
+                        <button type="submit">&lt;submit&gt;</button>
                     </form>
                 </section>
             </InnerWrapper>
