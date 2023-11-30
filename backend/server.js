@@ -4,9 +4,15 @@ import mongoose from "mongoose";
 import crypto from "crypto";
 import bcrypt from "bcrypt";
 
-const mongoUrl = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/project-auth"
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+const mongoUrl = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/projectAuth"
+mongoose
+  .connect(mongoUrl, {
+  useNewUrlParser: true, 
+  useUnifiedTopology: true })
+  .then(() => console.log("DB connected!"))
+  .catch(err => console.log(`DB not connected. Error: ${err}`))
 mongoose.Promise = Promise;
+
 
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
 // when starting the server. Example command to overwrite PORT env variable value:
@@ -44,8 +50,6 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema)
 
-// Naming conventions: Sign in/sign up OR register/log in
-
 // Create registration 
 app.post("/register", async (req, res) => {
   // npm i bcrypt
@@ -69,7 +73,7 @@ app.post("/register", async (req, res) => {
   } catch (e) {
     res.status(400).json({
       success: false,
-      response: e
+      response: e.message
     })
   }
 });
