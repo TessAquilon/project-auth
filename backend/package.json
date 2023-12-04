@@ -5,7 +5,6 @@
     "description": "Starter project to get up and running with express quickly",
     "scripts": {
         "start": "babel-node server.js",
-        "build": "node server.js",
         "dev": "node server.js"
     },
     "author": "",
