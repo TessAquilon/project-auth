@@ -6,7 +6,7 @@
     "scripts": {
         "start": "node server.js",
         "babel:node": "./node_modules/.bin/babel-node --presets=@babel/env",
-"dev": "nodemon --exec npm run babel:node -- server.js"
+"dev": "npm run babel:node -- server.js"
     },
     "author": "",
     "license": "ISC",
