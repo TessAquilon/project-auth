@@ -12,7 +12,7 @@ const NotFound = () => {
                     <p>Sorry, nothing here :/</p>
                     <section className="link-section">
                         <p>
-                        <Link to="/login">Back to login</Link>
+                        <Link to="/">Back to login</Link>
                         </p>
                     </section>
                 </section>

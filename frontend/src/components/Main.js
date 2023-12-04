@@ -17,7 +17,7 @@ const Main = () => {
     const navigate = useNavigate();
     useEffect(() => {
         if (!accessToken) {
-            navigate("/login")
+            navigate("/")
         }
     }, [accessToken]);
 

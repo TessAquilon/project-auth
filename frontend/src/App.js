@@ -19,7 +19,7 @@ export const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<Login />}></Route>
+          <Route path="/" element={<Login />}></Route>
           <Route path="/main" element={<Main />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
