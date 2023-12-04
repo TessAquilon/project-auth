@@ -5,7 +5,8 @@
     "description": "Starter project to get up and running with express quickly",
     "scripts": {
         "start": "node server.js",
-        "dev": "nodemon server.js --exec babel-node"
+        "babel:node": "./node_modules/.bin/babel-node --presets=@babel/env",
+"dev": "nodemon --exec npm run babel:node -- server.js"
     },
     "author": "",
     "license": "ISC",
