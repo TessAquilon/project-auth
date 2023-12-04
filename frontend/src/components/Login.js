@@ -17,7 +17,7 @@ const Login = () => {
     const error = useSelector(store => store.user.error);
     useEffect(() => {
         if(accessToken) {
-            navigate("/")
+            navigate("/main")
         }
     }, [accessToken]);
 
