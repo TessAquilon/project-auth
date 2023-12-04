@@ -29,6 +29,7 @@ const Main = () => {
                 "Authorization": accessToken
             }
         }
+        if (accessToken) {
         fetch(API_URL("thoughts"), options)
         .then(res => res.json())
         .then(data => {
@@ -40,7 +41,7 @@ const Main = () => {
                 dispatch(thoughts.actions.setItems([]))
             }
         })
-    })
+    }}, [accessToken, dispatch])
 
     const onLogoutButtonClick = () => {
         dispatch(user.actions.setAccessToken(null))
@@ -54,7 +55,7 @@ const Main = () => {
             <InnerWrapper>
                 <section className="main-section">
                     <button type="button" onClick={onLogoutButtonClick}>Logout</button>
-                    {username ? (<h2>Hi, &lt;{username}&gt;</h2>):""}
+                    {username && <h2>Hi, &lt;{username}&gt;</h2>}
                     {thoughtItems.map(item => {
                         return(<p key={item._id}>{item.message}</p>)
                     })}
