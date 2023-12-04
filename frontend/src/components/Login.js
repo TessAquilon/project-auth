@@ -23,8 +23,11 @@ const Login = () => {
             navigate("/")
         }
     }, [accessToken]);
+
     const onFormSubmit = (e) => {
         e.preventDefault();
+        dispatch(user.actions.setError(null));
+        
         const options = {
             method: "POST",
             headers: {
@@ -41,12 +44,17 @@ const Login = () => {
                 dispatch(user.actions.setUsername(data.response.username))
                 dispatch(user.actions.setUserId(data.response.id))
                 dispatch(user.actions.setError(null))
+                setUsername("")
+                setPassword("")
             } else {
                 dispatch(user.actions.setAccessToken(null))
                 dispatch(user.actions.setUsername(null))
                 dispatch(user.actions.setUserId(null))
                 dispatch(user.actions.setError(data.response))
             }
+        })
+        .catch (error => {
+            dispatch(user.actions.setError("Failed to connect. Please try again."));
         })
     }
     return(
