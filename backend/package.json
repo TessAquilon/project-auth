@@ -3,12 +3,6 @@
     "name": "project-auth-backend",
     "version": "1.0.0",
     "description": "Starter project to get up and running with express quickly",
-    "scripts": {
-        "start": "node server.js",
-        "babel:node": "./node_modules/.bin/babel-node --presets=@babel/env",
-"dev": "nodemon --exec npm run babel:node -- server.js",
-"build": "babel src -d dist"
-    },
     "author": "",
     "license": "ISC",
     "dependencies": {
@@ -27,5 +21,11 @@
     },
     "devDependencies": {
         "nodemon": "^3.0.2"
-    }
+    },
+    "scripts": {
+      "start": "node server.js",
+      "babel:node": "./node_modules/.bin/babel-node --presets=@babel/env",
+"dev": "nodemon --exec npm run babel:node -- server.js",
+"build": "babel src -d dist"
+  }
 }
