@@ -15,9 +15,6 @@ const Login = () => {
     const accessToken = useSelector(store => store.user.accessToken);
     const navigate = useNavigate();
     const error = useSelector(store => store.user.error);
-    const onInputChange = () => {
-            dispatch(user.actions.setError(null))
-    };
     useEffect(() => {
         if(accessToken) {
             navigate("/")
@@ -53,7 +50,7 @@ const Login = () => {
                 dispatch(user.actions.setError(data.response))
             }
         })
-        .catch (error => {
+        .catch (err => {
             dispatch(user.actions.setError("Failed to connect. Please try again."));
         })
     }
@@ -87,8 +84,7 @@ const Login = () => {
                                 type="text" 
                                 id="username" 
                                 value={username}
-                                onChange={e => {setUsername(e.target.value);
-                                onInputChange()}} />
+                                onChange={e => {setUsername(e.target.value)}} />
                         </section>
                         <section className="label-input-wrapper">
                             <label htmlFor="password">&lt;password&gt;</label>
