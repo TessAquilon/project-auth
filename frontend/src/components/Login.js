@@ -82,7 +82,8 @@ const Login = () => {
                             <label htmlFor="username">&lt;username&gt;</label>
                             <input 
                                 type="text" 
-                                id="username" 
+                                id="username"
+                                minLength={1}
                                 value={username}
                                 onChange={e => {setUsername(e.target.value)}} />
                         </section>
@@ -91,6 +92,7 @@ const Login = () => {
                             <input 
                                 type="password" 
                                 id="password"
+                                minLength={1}
                                 value={password}
                                 onChange={e => {
                                     setPassword(e.target.value)}} />
