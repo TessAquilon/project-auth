@@ -93,8 +93,7 @@ const Login = () => {
                                 id="password"
                                 value={password}
                                 onChange={e => {
-                                    setPassword(e.target.value);
-                                    onInputChange()}} />
+                                    setPassword(e.target.value)}} />
                         </section>
                         {error !== null && mode==="register" && <p>Sorry, username already exists.</p> }
                         {error !== null && mode==="login" && <p>Sorry, credentials do not match.</p> }
